@@ -1,0 +1,53 @@
+package selenium;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class implicitwait {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		WebDriver driver = new ChromeDriver();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
+	driver.get("https://rahulshettyacademy.com/loginpagePractise/");
+	
+	
+	driver.findElement(By.id("username")).sendKeys("rahulshettyacademy");
+
+	driver.findElement(By.xpath("//input[@type='password']")).sendKeys("learning");
+
+	
+	driver.findElement(By.xpath("//input[@id='terms']")).click();
+	
+	
+	driver.findElement(By.xpath("//input[@value='user']")).click();
+	
+	
+	driver.findElement(By.id("cancelBtn")).click();
+  
+	
+	//driver.findElement(By.id("okayBtn")).click();
+	
+	
+	driver.findElement(By.xpath("//input[@value='admin']")).click();
+	
+	
+	 //driver.findElement(By.id("cancelBtn")).click();
+    
+	
+	driver.findElement(By.xpath("//input[@name='signin']")).click();
+
+	
+	System.out.println(driver.getTitle());
+	
+	//System.out.println(driver.findElement(By.xpath("//div[contains(@class,'alert' )]")).getText());
+	
+	
+	}
+
+}
