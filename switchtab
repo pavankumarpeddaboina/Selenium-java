@@ -1,0 +1,45 @@
+package selenium;
+
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Switctab {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
+		driver.get("https://rahulshettyacademy.com/loginpagePractise/");
+		 Set <String> window1 = driver.getWindowHandles();
+         System.out.println(window1);
+		
+		
+		driver.findElement(By.xpath("//a[@class='blinkingText']")).click();
+		
+         Set <String> window2 = driver.getWindowHandles();
+         System.out.println(window2);
+         
+         Iterator <String> it = window2.iterator();  // it has knowledge of all the tabs
+       String parentID = it.next();
+       String childID = it.next();
+       
+       driver.switchTo().window(childID);
+		
+		
+		String text = driver.findElement(By.xpath("//strong/a")).getText();
+		System.out.println(text);
+
+		
+		
+
+	}
+
+}
