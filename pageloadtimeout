@@ -1,0 +1,37 @@
+package selenium;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class pageloadtimeout {
+
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
+		
+		driver.manage().window().maximize();
+		
+		Instant starttime = Instant.now();
+		System.out.println(starttime.toString());
+		
+		
+		driver.get("https://www.hyrtutorials.com/#google_vignette");
+		Instant endtime = Instant.now();
+		System.out.println(endtime.toString());
+		Duration duration = Duration.between(starttime, endtime);
+		System.out.println("pageLoad time: "+duration.toMillis() + "milli seconds");
+		
+		
+		System.out.println(driver.getTitle());
+		driver.quit();
+
+	}
+
+}
