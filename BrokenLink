@@ -1,0 +1,49 @@
+package selenium;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class BrokenLink {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+
+		
+		WebDriverManager.chromedriver().setup();
+		 WebDriver driver = new ChromeDriver();
+		 
+		 driver.get("https://www.hyrtutorials.com/");
+		 
+		 
+		List<WebElement> Links = driver.findElements(By.tagName("a"));
+		 System.out.println(Links.size());
+		 
+		 for (WebElement Link : Links) {
+			String linkUrl = Link.getAttribute("herf");
+			URL url = new URL (linkUrl);
+			URLConnection urlConnection = url.openConnection();
+			HttpURLConnection httpURLConnection = (HttpURLConnection) urlConnection;
+			httpURLConnection.setConnectTimeout(5000);
+			httpURLConnection.connect();
+			if (httpURLConnection.getResponseCode() ==200)
+				System.out.println(linkUrl + " -" +httpURLConnection.getResponseMessage());
+				else 
+					System.out.println(linkUrl + " -" +httpURLConnection.getResponseCode() + "-" +httpURLConnection.getResponseMessage());
+				
+			httpURLConnection.disconnect();	
+			
+		}
+		 
+		 driver.close();
+	}
+
+}
