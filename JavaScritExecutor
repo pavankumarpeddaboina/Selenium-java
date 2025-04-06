@@ -1,0 +1,39 @@
+package selenium;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Javascript {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+        WebDriverManager.chromedriver().setup();
+		WebDriverManager.chromedriver().setup();
+		 WebDriver driver = new ChromeDriver();
+		 
+		 driver.get("https://www.facebook.com/");
+		 
+		 JavascriptExecutor jsexExecutor = (JavascriptExecutor) driver ;// we are tpye casting with driver cursor keep on driver iwill show type caste method
+		 //WebElement element = (WebElement)jsexExecutor.executeScript("return document.getElementById('email');");// if you want to return you need to return statement
+		 //by using reference we are calling executescriptmethod  in that we are java script of that particular element then it execute and find the element
+		 // if you want that findout element then we are storing in a element trought that element we are performing the send key action
+		// element.sendKeys("sss.@gamil.com");
+		 
+		 
+		 
+		 
+		 jsexExecutor.executeScript("document.getElementById('email').value='kinnu'"); // to enter value in text box
+		 
+		 jsexExecutor.executeScript("document.getElementsByName('login')[0].click()");//to click operator 
+		 
+		 
+	}
+
+}
