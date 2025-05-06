@@ -1,0 +1,116 @@
+package practice_java;
+
+import java.io.File;
+import org.apache.commons.*;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Inoveke_browser {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	  WebDriver driver = new ChromeDriver();
+	  
+	  driver.get("https://kioskiat.bank.sbi/unifyapp/login/");
+	 // Thread.sleep(20000);
+	  
+	  driver.manage().window().maximize();
+	  
+	      // TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+			//File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+		    //File destFile = new File("C:\\Users\\SBI\\eclipse-workspace\\practice_java\\screenshot.jpg");
+			//File.copyFile(sourceFile, destFile);
+			//System.out.println("Screenshot saved successfully");
+	  
+	  driver.findElement(By.id("outlined-basic")).sendKeys("189813401");
+	  
+	  driver.findElement(By.xpath("//input[@type='password']")).sendKeys("dfi@1234");
+	  
+	 
+	  Thread.sleep(20000);
+	  
+	  driver.findElement(By.xpath("//button[@class='proceedbutton btn btn-contained']")).click();
+	  
+	 
+	  
+	  WebDriverWait w  = new WebDriverWait(driver,Duration.ofSeconds(4000));
+	  
+	  
+	WebElement fingerprintclick = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[contains(@src,'FingerprintFirstNew')]")));
+	fingerprintclick.click();
+	
+	WebElement cashwithdrawal = w.until(ExpectedConditions.elementToBeClickable(By.linkText("Cash Withdrawal")));
+	cashwithdrawal.click();
+	
+	//driver.findElement(By.xpath("//p[text()='BACK']")).click();
+	  
+	// WebElement topbackbutton = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[not (@disabled) and .//p[normalize-space(text())='BACK']]")));
+	 //topbackbutton.click();
+	
+	WebElement accountclick = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//p/img[@alt='AccountIconBlue']/parent::p")));
+	accountclick.click();
+	
+	
+	WebElement cifnumber = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='MuiInputBase-input MuiOutlinedInput-input css-1x5jdmq']")));
+	cifnumber.sendKeys("90004269413");
+	
+	
+	 WebDriverWait wait  = new WebDriverWait(driver,Duration.ofSeconds(4000));
+	 
+	 WebElement enteramount = driver.findElement(By.xpath("//input[contains(@placeholder,'Amount')]"));
+
+	 
+	 JavascriptExecutor js = (JavascriptExecutor) driver;
+	 js.executeScript("arguments[0].removeAttribute('readonly'); arguments[0].removeAttribute('disabled');", enteramount);
+	 js.executeScript("arguments[0].value='100'; arguments[0].dispatchEvent(new Event('input'));",enteramount);
+	 
+	 
+	
+	 WebElement proceedbutton = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='proceedbutton']")));
+	 proceedbutton.click();
+	 
+	 
+	 WebElement proceedbutton2 = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[text()='PROCEED']")));
+	 proceedbutton2.click();
+	 
+	 
+	
+	 driver.findElement(By.xpath("//input[@class='MuiInputBase-input MuiOutlinedInput-input css-1x5jdmq']")).sendKeys("dfi@1234");
+	 
+	 WebElement proceedbutton3 = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='proceedbutton']")));
+	 proceedbutton3.click();
+	 
+	 
+	 
+	 WebElement fingerprintclick1 = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[contains(@src,'Righthanddisabledn')]")));
+		fingerprintclick1.click();
+	 
+	 
+	
+	 
+	 
+	 
+	 
+	//p[text()='PROCEED']
+	 
+	 
+	//WebElement enteramount = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-1ixds2g']")));
+   // enteramount.sendKeys("300");
+	
+	//WebElement enteramount = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Enter Amount']")));
+	//enteramount.sendKeys("300");
+
+	  
+	}
+
+}
