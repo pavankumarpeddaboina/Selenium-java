@@ -33,7 +33,7 @@ public class screenshot {
 		//TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		//File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
 	    //File destFile = new File("C:\\Users\\DELL E3470\\Downloads\\pavan\\kinnu_workspace\\selenium\\screenshot.jpg");
-		//File.copyFile(sourceFile, destFile);
+		//FileUntil.copyFile(sourceFile, destFile);
 		//System.out.println("Screenshot saved successfully");
 		
 		//Bytes
