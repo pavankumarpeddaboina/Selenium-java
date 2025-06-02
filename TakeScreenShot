@@ -59,7 +59,15 @@ public class screenshot {
 	}
 
 		
-		
+
+
+
+
+TakesScreenshot takeScreenshot = (TakesScreenshot) driver;
+		File sourcefile = takeScreenshot.getScreenshotAs(OutputType.FILE);
+		File Destinationfile = new File("Screenshots\\screenshot6.jpg");
+		FileUtils.copyFile(sourcefile, Destinationfile);
+		System.out.println();
 
 		
 		
